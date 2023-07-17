@@ -5,17 +5,21 @@ import axios from 'axios'
 export default {
     name: "AppMain",
     props: {
-        projects: Array
+        project: Array
     }
 }
 
 </script>
 
 <template>
-    <div v-for="project in projects" class="border w-[calc(100%/5-8px)] rounded text-center flex flex-col justify-between">
-        <img :src='"http://localhost:8000/storage/" + project.image' :alt="project.name" class="w-full max-h-72 object-center object-cover rounded">
+    <div class="border w-[calc(100%/3-8px)] rounded text-center flex flex-col justify-between">
+        <img :src='"http://localhost:8000/storage/" + project.image' :alt="project.name" class="w-full max-h-80 object-center object-cover rounded">
         <div class="flex flex-col gap-2 justify-between">
             <h2 class="font-bold text-lg text-primary-blu uppercase tracking-wider">{{ project.name }}</h2>
+            <p>
+                <strong>Type: </strong>
+                <span>{{ project.type ? project.type.name : "N/A"}}</span>
+            </p>
             <div class="px-3 text-xs text-left">
                 <p>{{ project.description }}</p>
             </div>
