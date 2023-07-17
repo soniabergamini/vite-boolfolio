@@ -25,7 +25,7 @@ export default {
             </div>
             <p class="text-sm italic text-gray-500 my-2">({{ project.stack }})</p>
         </div>
-        <a :href="project.link" class="font-bold border tracking-wider bg-primary-blu text-white hover:border-spacing-2 border-primary-blu hover:bg-white hover:text-primary-blu">VISIT</a>
+        <a :href="project.link" class="font-bold border tracking-wider bg-primary-blu text-white hover:border-spacing-2 border-primary-blu hover:bg-white hover:text-primary-blu py-1">VISIT</a>
     </div>
 </template>
 

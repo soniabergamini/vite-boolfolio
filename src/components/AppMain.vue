@@ -54,13 +54,13 @@ export default {
     <!-- Buttons Page Card -->
     <section id="buttonSec" class="flex justify-center my-3">
         <div class="flex justify-center gap-7 border rounded px-3 py-1">
-                <button v-show="projCurrentPage > 1" @click="getProjectData(projCurrentPage-1)" class="px-2 border-r">Preview</button>
+                <button v-show="projCurrentPage > 1" @click="getProjectData(projCurrentPage-1)" class="px-2 border-r hover:text-primary-blu"><i class="fa-solid fa-chevron-left fa-xs"></i> Preview</button>
             <div class="px-3">
                 <template v-for="pageNumber in projTotalPages">
                     <button @click="getProjectData(pageNumber)" :class="projCurrentPage === pageNumber ? 'font-bold border text-primary-blu' : null" class="px-3 py-1 hover:bg-gray-200" >{{ pageNumber }}</button>
                 </template>
             </div>
-            <button v-show="projCurrentPage < projTotalPages" @click="getProjectData(projCurrentPage+1)" class="px-2 border-l">Next</button>
+            <button v-show="projCurrentPage < projTotalPages" @click="getProjectData(projCurrentPage+1)" class="px-2 border-l hover:text-primary-blu">Next <i class="fa-solid fa-chevron-right fa-xs"></i></button>
         </div>
     </section>
 </template>
