@@ -3,8 +3,8 @@ import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue'
 import AppFooter from './components/AppFooter.vue'
 
-import { store } from './data/store';
-import axios from 'axios';
+// import { store } from './data/store';
+// import axios from 'axios';
 
 export default {
   name: "App",
@@ -15,7 +15,7 @@ export default {
   },
   data() {
     return {
-      store,
+      // store,
     }
   }
 }
@@ -26,6 +26,7 @@ export default {
     <AppHeader />
   </header>
   <main>
+    <!-- <router-view></router-view> -->
     <AppMain />
   </main>
   <footer>

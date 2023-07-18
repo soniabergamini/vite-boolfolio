@@ -6,7 +6,7 @@ export default {
 
 </script>
 
-<template></template>
+<template>FOOTER</template>
 
 <style lang="scss" scoped>
 @use '../variables.scss' as *;
