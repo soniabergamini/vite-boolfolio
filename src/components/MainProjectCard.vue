@@ -5,7 +5,7 @@ import axios from 'axios'
 export default {
     name: "AppMain",
     props: {
-        project: Array
+        project: Object
     }
 }
 

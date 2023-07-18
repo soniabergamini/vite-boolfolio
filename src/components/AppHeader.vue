@@ -1,7 +1,15 @@
 <script>
 
 export default {
-    name: "AppHeader"
+    name: "AppHeader",
+    data() {
+        return {
+            menuItems: [
+                { name: 'homepage', label: 'Home', path: '/'},
+                { name: 'projects', label: 'Projects', path: '/projects'},
+            ]
+        }
+    },
 }
 
 </script>
@@ -17,12 +25,12 @@ export default {
         <!-- Nav Menu Links -->
         <div>
             <ul class="flex gap-[1em] text-[0.75rem] md:text-xs h-full items-center">
-                <li>
-                    <router-link class="text-xl" to="/">Home</router-link>
+                <li v-for="item in menuItems">
+                    <router-link class="text-lg font-bold hover:text-primary-blu" :to="item.path">{{item.label}}</router-link>
                 </li>
-                <li>
-                    <router-link class="text-xl" to="/projects">Projects</router-link>
-                </li>
+                <!-- <li>
+                    <router-link class="text-lg font-bold hover:text-primary-blu" :to="{name: 'projects'}">Projects</router-link>
+                </li> -->
             </ul>
         </div>
 
