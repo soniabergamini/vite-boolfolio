@@ -13,7 +13,13 @@ export default {
 
 <template>
     <div class="border w-[calc(100%/3-8px)] rounded text-center flex flex-col justify-between">
-        <img :src='"http://localhost:8000/storage/" + project.image' :alt="project.name" class="w-full max-h-80 object-center object-cover rounded">
+
+        <!-- On Click Redirect to Route 'show-projects' -->
+        <router-link :to="{ name:'show-projects', params: {id: project.id} }">
+            <img :src='"http://localhost:8000/storage/" + project.image' :alt="project.name" class="w-full max-h-80 object-center object-cover rounded">
+        </router-link>
+        
+        <!-- Project Info -->
         <div class="flex flex-col gap-2 justify-between">
             <h2 class="font-bold text-lg text-primary-blu uppercase tracking-wider">{{ project.name }}</h2>
             <p>

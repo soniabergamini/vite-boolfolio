@@ -22,7 +22,7 @@ export default {
     <AppHeader />
   </header>
   <main class="h-[calc(100vh-80px)]">
-    <router-view class="h-full"></router-view>
+    <router-view></router-view>
     <!-- <AppMain /> -->
   </main>
 </template>
