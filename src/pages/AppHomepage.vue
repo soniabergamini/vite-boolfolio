@@ -16,7 +16,7 @@
 </script>
 
 <template>
-  <section>
+  <section class="py-3">
     
     <!-- Carousel -->
     <v-carousel cycle show-arrows="hover" height="700" hide-delimiters>
