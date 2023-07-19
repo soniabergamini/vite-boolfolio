@@ -16,7 +16,7 @@ export default {
 
 <template>
     <!-- Nav Menu -->
-    <nav class="flex justify-between px-5 my-2">
+    <nav class="flex justify-between px-5 my-2 h-20">
         <a href="/">
             <img src="../assets/logo.png" alt="logo" width="100">
         </a>
