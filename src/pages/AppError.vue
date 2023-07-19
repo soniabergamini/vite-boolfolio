@@ -17,6 +17,7 @@
 </script>
 
 <template>
+    <!-- Error Message with Custom Background -->
     <section class="bg-gray-900 h-full">
         <div class="h-full bg-[url('../assets/dots.png')] bg-cover">
             <div class="h-full bg-[url('../assets/errorwallpaper.png')] bg-cover bg-bottom flex items-center justify-evenly text-center">
@@ -28,7 +29,6 @@
                 </div>
             </div>
         </div>
-        
         <!-- <v-alert :title="`Error ${$route.params.code}: ${$route.params.message}`" :text="errorText" type="error"></v-alert> -->
     </section>
     

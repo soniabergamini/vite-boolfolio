@@ -20,6 +20,7 @@ export default {
         }
     },
     methods: {
+        // Returns Projects Data via API Call
         getProjectData(pageNumber) {
             this.store.loading = true
             axios.get(this.store.baseAPIurl + this.store.projAPIpath, {params: {page: pageNumber}}).then((response) => {
@@ -44,7 +45,7 @@ export default {
 
 <template>
 
-    <!-- Project Card Section -->
+    <!-- Spinner Loader -->
     <div v-if="store.loading" role="status" class="flex justify-center my-10">
         <svg aria-hidden="true" class="inline w-14 h-14 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-primary-blu" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -52,16 +53,20 @@ export default {
         </svg>
         <span class="sr-only">Loading...</span>
     </div>
+
+    <!-- Error Message -->
     <div v-if="loadingError" class="flex justify-center my-10 text-red-600">
         <p>{{ loadingError }}</p>
     </div>
+
+    <!-- Project Cards Section -->
     <section v-if="projects.length > 0" class="flex justify-between flex-wrap gap-2 p-6">
         <template v-for="project in projects">
             <MainProjectCard :project="project" />
         </template>
     </section>
 
-    <!-- Buttons Page Card -->
+    <!-- Change Page Buttons  -->
     <section id="buttonSec" class="flex justify-center my-3">
         <div class="flex justify-center gap-7 border rounded px-3 py-1">
                 <button v-show="projCurrentPage > 1" @click="getProjectData(projCurrentPage-1)" class="px-2 border-r hover:text-primary-blu"><i class="fa-solid fa-chevron-left fa-xs"></i> Preview</button>
@@ -73,6 +78,7 @@ export default {
             <button v-show="projCurrentPage < projTotalPages" @click="getProjectData(projCurrentPage+1)" class="px-2 border-l hover:text-primary-blu">Next <i class="fa-solid fa-chevron-right fa-xs"></i></button>
         </div>
     </section>
+    
 </template>
 
 <style lang="scss" scoped>

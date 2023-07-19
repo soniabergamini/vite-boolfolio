@@ -1,18 +1,10 @@
 <script>
 import AppHeader from './components/AppHeader.vue'
 
-// import { store } from './data/store';
-// import axios from 'axios';
-
 export default {
   name: "App",
   components: {
     AppHeader
-  },
-  data() {
-    return {
-      // store,
-    }
   }
 }
 </script>
@@ -23,7 +15,6 @@ export default {
   </header>
   <main class="h-[calc(100vh-80px)]">
     <router-view></router-view>
-    <!-- <AppMain /> -->
   </main>
 </template>
 

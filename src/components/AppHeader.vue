@@ -28,9 +28,6 @@ export default {
                 <li v-for="item in menuItems">
                     <router-link class="text-lg font-bold hover:text-primary-blu" :to="item.path">{{item.label}}</router-link>
                 </li>
-                <!-- <li>
-                    <router-link class="text-lg font-bold hover:text-primary-blu" :to="{name: 'projects'}">Projects</router-link>
-                </li> -->
             </ul>
         </div>
 

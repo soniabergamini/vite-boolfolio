@@ -1,5 +1,4 @@
 // 1. Define & import route components
-
 import { createRouter, createWebHistory } from "vue-router";
 import AppHomepage from './pages/AppHomepage.vue';
 import AppProjects from './pages/AppProjects.vue';
@@ -16,6 +15,5 @@ const router = createRouter({
         { path: '/error/:code', component: AppError, name: 'error' },
     ]
 })
-
 
 export {router}
