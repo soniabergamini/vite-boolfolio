@@ -10,7 +10,7 @@ export default {
     },
     data() {
         return {
-            baseAPIurl: "http://localhost:8000/api/",
+            baseAPIurl: "http://localhost:8000/apii/",
             projAPIpath: "projects",
             projects: [],
             loading: false,
