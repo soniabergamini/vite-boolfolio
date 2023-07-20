@@ -23,7 +23,7 @@ export default {
         // Returns Projects Data via API Call
         getProjectData(pageNumber) {
             this.store.loading = true
-            axios.get(this.store.baseAPIurl + this.store.projAPIpath, {params: {page: pageNumber}}).then((response) => {
+            axios.get(import.meta.env.VITE_BASE_API_URL + this.store.projAPIpath, {params: {page: pageNumber}}).then((response) => {
                 // console.log(response.data.results),
                 this.store.loading = false,
                 this.projects = response.data.results.data,

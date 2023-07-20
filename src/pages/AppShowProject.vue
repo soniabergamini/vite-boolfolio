@@ -15,8 +15,8 @@ import axios from 'axios';
         // Returns Project Data via API Call
         getProject(id) {
             this.store.loading = true,
-            console.log('api: ', this.store.baseAPIurl + this.store.projAPIpath + '/' + id)
-            axios.get(this.store.baseAPIurl + this.store.projAPIpath + '/' + id).then((response) => {
+            // console.log('api: ', import.meta.env.VITE_BASE_API_URL + this.store.projAPIpath + '/' + id)
+            axios.get(import.meta.env.VITE_BASE_API_URL + this.store.projAPIpath + '/' + id).then((response) => {
                 console.log(response.data),
                 this.store.loading = false,
                 this.project = response.data.results
