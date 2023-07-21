@@ -77,6 +77,6 @@ import axios from 'axios';
     
 
 <style lang="scss" scoped>
-@use '../variables.scss' as *;
+@use '../style.scss' as *;
 
 </style>

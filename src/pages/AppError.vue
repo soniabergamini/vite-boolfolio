@@ -36,7 +36,7 @@
     
 
 <style lang="scss" scoped>
-@use '../variables.scss' as *;
+@use '../style.scss' as *;
 h1 {
   -webkit-text-stroke: 3px #FBAB1B;
 }

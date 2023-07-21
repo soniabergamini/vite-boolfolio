@@ -12,14 +12,11 @@ export default {
 </script>
 
 <template>
-    <section class="bg-gray-800 py-7 flex justify-between px-6">
+    <section class="bg-[#1a2233] h-full py-2 flex justify-center">
         <FooterContactForm />
-        <div class="w-[1/2]">
-            footer links
-        </div>
     </section>
 </template>
 
 <style lang="scss" scoped>
-@use '../variables.scss' as *;
+@use '../style.scss' as *;
 </style>

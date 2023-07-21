@@ -69,7 +69,7 @@ export default {
     </section>
 
     <!-- Change Page Buttons  -->
-    <section id="buttonSec" class="flex justify-center my-3">
+    <section id="buttonSec" class="flex justify-center py-3">
         <div class="flex justify-center gap-7 border rounded px-3 py-1">
                 <button v-show="projCurrentPage > 1" @click="getProjectData(projCurrentPage-1)" class="px-2 border-r hover:text-primary-blu"><i class="fa-solid fa-chevron-left fa-xs"></i> Preview</button>
             <div class="px-3">
@@ -84,6 +84,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use '../variables.scss' as *;
+@use '../style.scss' as *;
 
 </style>

@@ -37,5 +37,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use '../variables.scss' as *;
+@use '../style.scss' as *;
 </style>

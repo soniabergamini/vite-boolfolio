@@ -14,10 +14,10 @@ export default {
         }
     },
     methods: {
-        // Send Contat Request With API
+        // Send Contact Request with API
         sendForm() {
             this.loading = true;
-            this.errors = [];
+            this.errors = false;
             this.success = false;
 
             let requestData = {
@@ -38,9 +38,11 @@ export default {
                     this.formEmail = '';
                     this.formMessage = '';
                     console.log('Contact Request POST API Success.');
+                    setTimeout(() => this.success = false, 1 * 5000);
                 }
             }).catch(err=>{
                 this.loading = false,
+                console.log(this.errors)
                 console.log('Contact Request POST API Failure. ', err)
             })
             
@@ -51,49 +53,56 @@ export default {
 </script>
 
 <template>
-    <section>
+    <section class="flex flex-col items-center px-4 text-white">
         <!-- Contact Form -->
-        <form @submit.prevent="sendForm()">
+        <h4 class="font-bold text-2xl mb-2">💌 &nbsp;CONTACT US</h4>
+        <form @submit.prevent="sendForm()" class="flex justify-between gap-3 items-end">
         
             <!-- Name -->
-            <label for="formName" class="font-bold text-white">Name</label>
-            <input placeholder="Jane Doe" class="form-control" :class="{ 'is-invalid' : errors.name}" type="text" name="formName" id="formName" v-model="formName">
-            <div class="invalid-feedback">
-                <template v-for="error in errors.name">
-                    <span>{{error}}. </span>
-                </template>
+            <div>
+                <label for="formName" class="font-bold">Name</label>
+                <input placeholder="Jane Doe" class="form-control mt-0.5" :class="{ 'is-invalid' : errors.name}" type="text" name="formName" id="formName" v-model="formName">
+                <div class="invalid-feedback">
+                    <template v-for="error in errors.name">
+                        <span>{{error}}. </span>
+                    </template>
+                </div>
             </div>
-
+            
             <!-- Email -->
-            <label for="formMessage" class="font-bold text-white">Email</label>
-            <input placeholder="janedoe@mail.com" class="form-control" :class="{ 'is-invalid' : errors.email}" type="email" name="formEmail" id="formEmail" v-model="formEmail">
-            <div class="invalid-feedback">
-                <template v-for="error in errors.email">
-                    <span>{{error}}. </span>
-                </template>
+            <div>
+                <label for="formMessage" class="font-bold">Email</label>
+                <input placeholder="janedoe@mail.com" class="form-control mt-0.5" :class="{ 'is-invalid' : errors.email}" type="email" name="formEmail" id="formEmail" v-model="formEmail">
+                <div class="invalid-feedback">
+                    <template v-for="error in errors.email">
+                        <span>{{error}}. </span>
+                    </template>
+                </div>
             </div>
-
+            
             <!-- Message -->
-            <label for="formMessage" class="font-bold text-white">Message</label>
-            <textarea placeholder="Write here your message...." name="formMessage" id="formMessage" class="form-control" cols="30" rows="5" :class="{ 'is-invalid' : errors.message}" v-model="formMessage"></textarea>
-            <div class="invalid-feedback">
-                <template v-for="error in errors.message">
-                    <span>{{error}}. </span>
-                </template>
-            </div>    
-    
+            <div>
+                <label for="formMessage" class="font-bold">Message</label>
+                <textarea placeholder="Write here your message...." name="formMessage" id="formMessage" class="form-control mt-0.5" cols="50" rows="1" :class="{ 'is-invalid' : errors.message}" v-model="formMessage"></textarea>
+                <div class="invalid-feedback">
+                    <template v-for="error in errors.message">
+                        <span>{{error}}. </span>
+                    </template>
+                </div> 
+            </div>
+               
             <!-- Submit Button -->
-            <v-btn type="submit" variant="flat" density="default" size="small" rounded="xs" class="hover:text-primary-blu font-bold px-3 py-1 bg-primary-blu hover:bg-white text-slate-50">SEND</v-btn>
+            <v-btn type="submit" variant="flat" density="default" rounded="xs" :class="{ 'self-center mb-3' : Object.keys(errors).length>0 }" class="hover:text-primary-blu font-bold bg-primary-blu hover:bg-white text-slate-50 px-3 mb-2" :disabled="loading">{{ loading ? 'SENDING...' : 'SEND'}}</v-btn>
+            
     
         </form>
 
         <!-- Confirmation Message -->
-        <p v-if="success" class="text-green-500">Your message has been successfully sent. </p>
+        <p class="text-green-500 text-sm" v-if="success">Your message has been successfully sent!</p>
     </section>
     
 </template>
 
 <style lang="scss" scoped>
-@use '../variables.scss' as *;
+@use '../style.scss' as *;
 </style>
-

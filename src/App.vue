@@ -16,12 +16,14 @@ export default {
   <header>
     <AppHeader />
   </header>
-  <main class="h-[calc(100vh-80px)]">
+  <main class="h-[calc(100vh-230px)] overflow-y-scroll">
     <router-view></router-view>
   </main>
-  <footer>
+  <footer class="h-[150px]">
     <AppFooter />
   </footer>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+  
+</style>

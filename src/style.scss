@@ -1,0 +1,13 @@
+/******** TAILWIND DIRECTIVES ********/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/******** GENERAL STYLE ********/
+* {
+    font-family: 'Poiret One', cursive; 
+
+    h1, h2, h3, h4, h5, h6{
+        font-family: 'Rubik Microbe', cursive;
+    }
+}  

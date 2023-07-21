@@ -25,7 +25,7 @@ export default {
 
         <!-- Site Title: Onclick Redirect to Route 'projects' -->
         <router-link :to="{name : 'projects'}">
-            <h1 class="font-bold text-2xl text-center text-primary-blu my-4"><i class="fa-solid fa-laptop-code fa-lg mr-2"></i> BOOLFOLIO</h1>
+            <h1 class="font-bold text-3xl text-center text-primary-blu my-4"><i class="fa-solid fa-laptop-code fa-lg mr-2"></i> BOOLFOLIO</h1>
         </router-link>
         
         <!-- Nav Menu Links -->
@@ -42,5 +42,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use '../variables.scss' as *;
+@use '../style.scss' as *;
 </style>

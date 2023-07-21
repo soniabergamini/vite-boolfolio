@@ -16,10 +16,10 @@
 </script>
 
 <template>
-  <section class="py-3">
+  <section class="pt-3 h-full">
     
     <!-- Carousel -->
-    <v-carousel cycle show-arrows="hover" height="700" hide-delimiters>
+    <v-carousel cycle show-arrows="hover" hide-delimiters class="h-full carousel">
         <template v-slot:prev="{ props }">
           <v-btn variant="tonal" color="light" @click="props.onClick"><i class="fa-solid fa-chevron-left text-white fa-xl"></i></v-btn>
         </template>
@@ -39,6 +39,9 @@
     
 
 <style lang="scss" scoped>
-@use '../variables.scss' as *;
+@use '../style.scss' as *;
 
+.carousel, .carousel div{
+  height: 100% !important;
+}
 </style>
