@@ -31,7 +31,9 @@ export default {
                 this.projTotalPages = response.data.results.last_page
             }).catch(err=> {
                 this.store.loading = false,
-                this.loadingError = "Cannot load projects data. " + err,
+                this.loadingError = "Cannot load projects data. " + err;
+                console.log(err)
+                // let statusCode = (err.response.status && err.response.status>0 && err.response.status<599) ? err.response.status : 404;
                 this.$router.push({ name: 'error', params: { code: 404 } })
             })
         }
