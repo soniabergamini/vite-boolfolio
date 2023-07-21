@@ -1,13 +1,13 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
-import AppFooter from './components/AppFooter.vue';
+import FooterContactForm from './components/FooterContactForm.vue';
 
 
 export default {
   name: "App",
   components: {
     AppHeader,
-    AppFooter
+    FooterContactForm
   }
 }
 </script>
@@ -20,7 +20,9 @@ export default {
     <router-view></router-view>
   </main>
   <footer class="h-[150px]">
-    <AppFooter />
+    <section class="bg-[#1a2233] h-full py-2 flex justify-center">
+        <FooterContactForm />
+    </section>
   </footer>
 </template>
 
