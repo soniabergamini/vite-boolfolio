@@ -22,10 +22,13 @@
         <div class="h-full bg-[url('../assets/goldpoints.png')] bg-cover">
             <div class="h-full bg-[url('../assets/errorwallpaper.png')] bg-cover bg-bottom flex items-center justify-evenly text-center">
                 <div>
-                    <h3 class="font-bold text-[#FBAB1B] text-3xl">Houston, </h3>
-                    <h3 class="font-bold text-[#FBAB1B] text-3xl mb-[-40px] bg-gray-900">we have a problem. </h3>
-                    <h1 class="font-bold text-white text-[180px] tracking-widest">{{ $route.params.code }}</h1>
-                    <h2 class="font-bold text-[#FBAB1B] text-5xl mt-[-40px] bg-gray-900">{{errorMessage[$route.params.code]}}</h2>
+                    <h3 class="font-bold text-[#FBAB1B] text-xl sm:text-3xl">Houston, </h3>
+                    <h3 class="font-bold text-[#FBAB1B] text-xl sm:text-3xl mb-[-40px] bg-gray-900">we have a problem. </h3>
+                    <h1 class="font-bold text-white text-[120px] sm:text-[180px] tracking-widest">{{ $route.params.code }}</h1>
+                    <h2 class="font-bold text-[#FBAB1B] text-xl sm:text-5xl mt-[-40px] bg-gray-900">{{errorMessage[$route.params.code]}}</h2>
+                    <router-link :to="{ name:'homepage' }">
+                      <button class="font-bold text-[#FBAB1B] px-3 rounded mt-5 hover:shadow hover:shadow-[#FBAB1B]"><i class="fa-solid fa-arrow-left"></i> GO BACK HOME</button>
+                    </router-link>
                 </div>
             </div>
         </div>

@@ -61,24 +61,29 @@ export default {
         <p>{{ loadingError }}</p>
     </div>
 
-    <!-- Project Cards Section -->
-    <section v-if="projects.length > 0" class="flex justify-between flex-wrap gap-2 p-6">
-        <template v-for="project in projects">
-            <MainProjectCard :project="project" />
-        </template>
-    </section>
+    <!-- PROJECTS SECTION -->
+    <section class="flex flex-col justify-center gap-3 overflow-y-scroll">
 
-    <!-- Change Page Buttons  -->
-    <section id="buttonSec" class="flex justify-center py-3">
-        <div class="flex justify-center gap-7 border rounded px-3 py-1">
-                <button v-show="projCurrentPage > 1" @click="getProjectData(projCurrentPage-1)" class="px-2 border-r hover:text-primary-blu"><i class="fa-solid fa-chevron-left fa-xs"></i> Preview</button>
-            <div class="px-3">
-                <template v-for="pageNumber in projTotalPages">
-                    <button @click="getProjectData(pageNumber)" :class="projCurrentPage === pageNumber ? 'font-bold border text-primary-blu' : null" class="px-3 py-1 hover:bg-gray-200" >{{ pageNumber }}</button>
-                </template>
+        <!-- Project Cards -->
+        <section v-if="projects.length > 0" class="flex flex-col sm:flex-row items-center sm:items-stretch justify-between flex-wrap gap-3 sm:gap-2 px-[2px] sm:px-6 md:px-6 lg:px-6 pt-3">
+            <template v-for="project in projects">
+                <MainProjectCard :project="project" />
+            </template>
+        </section>
+
+        <!-- Change Page Buttons  -->
+        <section id="buttonSec" class="flex justify-center py-3">
+            <div class="flex justify-center gap-7 border rounded px-3 py-1">
+                    <button v-show="projCurrentPage > 1" @click="getProjectData(projCurrentPage-1)" class="px-2 border-r hover:text-primary-blu"><i class="fa-solid fa-chevron-left fa-xs align-middle text-gray-500"></i> Preview</button>
+                <div class="px-3">
+                    <template v-for="pageNumber in projTotalPages">
+                        <button @click="getProjectData(pageNumber)" :class="projCurrentPage === pageNumber ? 'font-bold border text-primary-blu' : null" class="px-3 py-1 hover:bg-gray-200" >{{ pageNumber }}</button>
+                    </template>
+                </div>
+                <button v-show="projCurrentPage < projTotalPages" @click="getProjectData(projCurrentPage+1)" class="px-2 border-l hover:text-primary-blu">Next <i class="fa-solid fa-chevron-right fa-xs align-middle text-gray-500"></i></button>
             </div>
-            <button v-show="projCurrentPage < projTotalPages" @click="getProjectData(projCurrentPage+1)" class="px-2 border-l hover:text-primary-blu">Next <i class="fa-solid fa-chevron-right fa-xs"></i></button>
-        </div>
+        </section>
+
     </section>
     
 </template>

@@ -16,7 +16,7 @@
 </script>
 
 <template>
-  <section class="pt-3 h-full">
+  <section class="border-t h-full">
     
     <!-- Carousel -->
     <v-carousel cycle show-arrows="hover" hide-delimiters class="h-full carousel">
@@ -31,7 +31,7 @@
 
     <!-- Button Redirect On Cick to Route 'projects' -->
     <router-link :to="{name: 'projects'}" class="absolute z-10 top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%]">
-      <v-btn variant="flat" density="default" size="x-large" rounded="xs" class="hover:text-primary-blu font-bold px-3 py-1 bg-primary-blu hover:bg-white text-slate-50	">ALL PROJECTS</v-btn>
+      <v-btn variant="flat" density="default" size="x-large" rounded="xs" class="hover:text-primary-blu font-bold px-3 py-1 bg-primary-blu hover:bg-white text-slate-50">ALL PROJECTS</v-btn>
     </router-link>
 
   </section>  
