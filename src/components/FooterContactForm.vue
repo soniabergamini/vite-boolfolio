@@ -5,47 +5,46 @@ export default {
     name: "FooterContactForm",
     data() {
         return {
-            formName: '',
-            formEmail: '',
-            formMessage: '',
+            requestData: { name: '', email: '', message: '' },
             loading: false,
             errors: [],
-            success: false
+            success: false,
+            failure: false
+        }
+    },
+    watch: {
+        // Immediately Sets Failure False When Success Becomes True
+        success() {
+            if (this.success) {
+                this.failure = false
+            }
         }
     },
     methods: {
         // Send Contact Request with API
         sendForm() {
             this.loading = true;
-            this.errors = false;
+            this.errors = [];
             this.success = false;
 
-            let requestData = {
-                name: this.formName,
-                email: this.formEmail,
-                message: this.formMessage
-            }
-
-            axios.post(import.meta.env.VITE_BASE_API_URL + "contacts", requestData).then((response) => {
-                console.log(response);
+            axios.post(import.meta.env.VITE_BASE_API_URL + "contacts", this.requestData).then((response) => {
                 this.loading = false;
                 if(!response.data.success) {
                     this.errors = response.data.errors;
-                    console.log('Contact Request POST API Failure.');
+                    // console.error('Contact Request POST API Failure.');
+                    setTimeout(() => this.errors = [], 1 * 5000);
                 } else {
                     this.success = true;
-                    this.formName = '';
-                    this.formEmail = '';
-                    this.formMessage = '';
-                    console.log('Contact Request POST API Success.');
+                    this.requestData = { name: '', email: '', message: '' },
+                    // console.log('Contact Request POST API Success.');
                     setTimeout(() => this.success = false, 1 * 5000);
                 }
             }).catch(err=>{
                 this.loading = false,
-                console.log(this.errors)
-                console.log('Contact Request POST API Failure. ', err)
+                this.failure = true,
+                setTimeout(() => this.failure = false, 1 * 5000);
+                // console.error('Contact Request POST API Failure. ', err)
             })
-            
         }
     }
 }
@@ -53,15 +52,15 @@ export default {
 </script>
 
 <template>
-    <section class="flex flex-col items-center px-4 text-white">
+    <section class="flex flex-col items-center sm:px-4 px-1 text-white">
         <!-- Contact Form -->
-        <h4 class="font-bold text-2xl mb-2">💌 &nbsp;CONTACT US</h4>
-        <form @submit.prevent="sendForm()" class="flex justify-between gap-3 items-end">
+        <h4 class="font-bold text-lg sm:text-2xl mb-2">💌 &nbsp;CONTACT US</h4>
+        <form @submit.prevent="sendForm()" class="flex justify-between gap-3">
         
             <!-- Name -->
             <div>
                 <label for="formName" class="font-bold">Name</label>
-                <input placeholder="Jane Doe" class="form-control mt-0.5" :class="{ 'is-invalid' : errors.name}" type="text" name="formName" id="formName" v-model="formName">
+                <input placeholder="Jane Doe" class="form-control mt-0.5" :class="{ 'is-invalid' : errors.name}" type="text" name="formName" id="formName" v-model="requestData.name">
                 <div class="invalid-feedback">
                     <template v-for="error in errors.name">
                         <span>{{error}}. </span>
@@ -72,7 +71,7 @@ export default {
             <!-- Email -->
             <div>
                 <label for="formMessage" class="font-bold">Email</label>
-                <input placeholder="janedoe@mail.com" class="form-control mt-0.5" :class="{ 'is-invalid' : errors.email}" type="email" name="formEmail" id="formEmail" v-model="formEmail">
+                <input placeholder="janedoe@mail.com" class="form-control mt-0.5" :class="{ 'is-invalid' : errors.email}" type="email" name="formEmail" id="formEmail" v-model="requestData.email">
                 <div class="invalid-feedback">
                     <template v-for="error in errors.email">
                         <span>{{error}}. </span>
@@ -83,7 +82,7 @@ export default {
             <!-- Message -->
             <div>
                 <label for="formMessage" class="font-bold">Message</label>
-                <textarea placeholder="Write here your message...." name="formMessage" id="formMessage" class="form-control mt-0.5" cols="50" rows="1" :class="{ 'is-invalid' : errors.message}" v-model="formMessage"></textarea>
+                <textarea placeholder="Write here your message...." name="formMessage" id="formMessage" class="form-control mt-0.5" cols="50" rows="1" :class="{ 'is-invalid' : errors.message}" v-model="requestData.message"></textarea>
                 <div class="invalid-feedback">
                     <template v-for="error in errors.message">
                         <span>{{error}}. </span>
@@ -92,13 +91,14 @@ export default {
             </div>
                
             <!-- Submit Button -->
-            <v-btn type="submit" variant="flat" density="default" rounded="xs" :class="{ 'self-center mb-3' : Object.keys(errors).length>0 }" class="hover:text-primary-blu font-bold bg-primary-blu hover:bg-white text-slate-50 px-3 mb-2" :disabled="loading">{{ loading ? 'SENDING...' : 'SEND'}}</v-btn>
+            <v-btn type="submit" variant="flat" density="default" rounded="xs" :class="{ 'self-center mb-3' : Object.keys(errors).length>0 }" class="hover:text-primary-blu font-bold self-end bg-primary-blu hover:bg-white text-slate-50 px-3 mb-2" :disabled="loading">{{ loading ? 'SENDING...' : 'SEND'}}</v-btn>
             
     
         </form>
 
         <!-- Confirmation Message -->
         <p class="text-green-500 text-sm" v-if="success">Your message has been successfully sent!</p>
+        <p class="text-red-700 text-sm" v-if="failure">Something went wrong while sending your message</p>
     </section>
     
 </template>
